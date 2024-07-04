@@ -1,0 +1,23 @@
+<div class="sidebar">
+    <div class="brand">
+      <h1>DashStack</h1>
+    </div>
+    <nav class="menu">
+      <ul>
+        <li routerLinkActive="active"><a (click)="loadTrainees()"><span class="material-icons">dashboard</span>Trainee</a></li>
+        <li routerLinkActive="active"><a (click)="toSubscription()"><span class="material-icons">inventory_2</span>Subscription</a></li>
+        <li routerLinkActive="active"><a (click)="toAdmin()"><span class="material-icons">favorite</span>Admin</a></li>
+        <li routerLinkActive="active"><a (click)="toPayment()"><span class="material-icons">inbox</span>Payment</a></li>
+        <li routerLinkActive="active"><a (click)="toLogin()"><span class="material-icons">list_alt</span>Login</a></li>
+        <li routerLinkActive="active"><a (click)="toRegister()"><span class="material-icons">inventory</span>Register</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+   
+    <main>
+      <router-outlet></router-outlet> <!-- Placeholder for child components -->
+    </main>
+  </div>
+  

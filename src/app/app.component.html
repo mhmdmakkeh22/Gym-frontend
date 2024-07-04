@@ -1,0 +1,14 @@
+
+<div class="app-container">
+    <header *ngIf="isConnected">
+      <h1>{{ title }}</h1>
+      <nav>
+        <button routerLink="login" routerLinkActive="active" (click)="onConnected()">Login</button>
+        <button routerLink="/register" routerLinkActive="active"  (click)="onConnected()">Register</button>
+      </nav>
+    </header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+  

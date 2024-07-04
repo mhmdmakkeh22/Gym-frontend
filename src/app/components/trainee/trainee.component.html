@@ -1,0 +1,78 @@
+<main>
+<header class="header">
+  <form (ngSubmit)="loadTraineesBySubscription()">
+    <label>
+      Subscription Type:
+      <input class="search-bar" [(ngModel)]="subscriptionType" name="subscriptionType" required />
+    </label>
+    <button class="filter" type="submit">Filter</button>
+  </form>
+</header>
+<button class="add" (click)="toggleAddForm()">Add Trainee</button>
+<div *ngIf="showAddForm" class="add-form-container">
+  <h3>Add New Trainee</h3>
+  <form #traineeForm="ngForm" (ngSubmit)="addTrainee(traineeForm.value)" class="add-form">
+    <label>
+      Name:
+      <input ngModel name="name" required />
+    </label>
+    <label>
+      Email:
+      <input ngModel name="email" required />
+    </label>
+    <label>
+      Phone:
+      <input ngModel name="phone" required />
+    </label>
+    <label>
+      Subscription:
+      <input ngModel name="subscriptionType" required />
+    </label>
+    <button type="submit">Add</button>
+    <button type="button" (click)="cancelAdd()" class="cancel-button">Cancel</button>
+  </form>
+</div>
+<section class="favorites">
+  <h2>Trainees</h2>
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let trainee of trainees">
+      <img src="https://istyle.com.lb/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/a/p/apple_watch_series_9_gps_pink_aluminum_light_pink_sport_loop_pdp_image_position-1__en-me_1.jpg" alt="Apple Watch Series 4">
+      <div class="product-info">
+        <h3>{{trainee.name}}</h3>
+        <p class="price">{{trainee.subscription}}</p>
+        <div class="ratings">
+          <span class="material-icons"></span>
+          {{trainee.phone}}
+        </div>
+        <button (click)="selectTrainee(trainee)" class="edit-button">Edit trainee</button>
+      </div>
+      <div *ngIf="selectedTrainee === trainee" class="edit-container">
+        <h3>Edit Trainee</h3>
+        <form #traineeForm="ngForm" (ngSubmit)="updateTrainee(selectedTrainee)">
+          <label>
+            Name:
+            <input [(ngModel)]="selectedTrainee.name" name="name" required />
+          </label>
+          <label>
+            Email:
+            <input [(ngModel)]="selectedTrainee.email" name="email" required />
+          </label>
+          <label>
+            Phone:
+            <input [(ngModel)]="selectedTrainee.phone" name="phone" required />
+          </label>
+          <label>
+            Subscription:
+            <input [(ngModel)]="selectedTrainee.subscription" name="phone" required />
+          </label>
+          <button type="submit">Update</button>
+          <button type="button" (click)="deleteTrainee(selectedTrainee._id!)" class="delete-button">Delete</button>
+          <button type="button" (click)="cancel()" class="cancel-button">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+
