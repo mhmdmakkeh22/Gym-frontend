@@ -48,6 +48,8 @@ export class AuthService {
     }
   }
 
+ 
+
   logout(): void {
     localStorage.removeItem('accessToken');
     this.adminService.setAdminDetails('', '');
